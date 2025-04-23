@@ -4,21 +4,16 @@ float maxHeight = 360.0;
 float defaultHeight = 492.0;
     
 class Player {
-  int health;
   int level;
   Gif Char; 
   PApplet rpg;
-  PImage enemy;
+  PImage healthBar;
   float x, y;
   
-  Player(PApplet rpg, String spritePath, float x, float y, int health) {
+  Player(PApplet rpg, String spritePath, float x, float y) {
     this.rpg = rpg;
     this.x = x;
     this.y = y;
-    
-    if (health == 100) {
-      rpg.image()
-    }
     
     Char = new Gif(rpg, spritePath);
     Char.loop();    
@@ -48,9 +43,11 @@ class Player {
     }
   }
   
-  void displayHealth(float health, int level) {
-    this.health = health;
-    this.level = level;
+  void displayHealth(float hX, float hY, int health) {
+    if (health == 100) {
+      healthBar = loadImage("Health1.png");
+      rpg.image(healthBar, hX, hY);
+    }
   }
   
 void keyReleased() {
