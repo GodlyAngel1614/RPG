@@ -1,9 +1,16 @@
+import net.java.games.input.*;
+import org.gamecontrolplus.*;
+import org.gamecontrolplus.gui.*;
+
+import processing.pdf.*;
+
 import gifAnimation.*;
 int startTime;
 int delayTime = 3000;
 
 ChangeBackground level;
 Player playerChar;
+Enemy enemyChar;
 
 PImage bg;
 Button[] buttons;
@@ -23,7 +30,7 @@ void setup() {
   playerChar = new Player(this, "Idle.gif", width/2, 500);
   playerChar.DisplayPlayer();
  
- 
+ enemyChar = new Enemy(this, "")
 }
 
 // Define a Button class
@@ -63,7 +70,7 @@ class Button {
 boolean playWasPressed = false;
 
 void draw() {
-  if (removeButtons && City != null) {  
+  if (removeButtons && City != null)  {
     image(City, 0, 0); // Display GIF if buttons are removed
   } else {
     background(bg); // Display background if buttons are still there
@@ -84,6 +91,7 @@ void draw() {
       level.display();
     if (playerChar != null) {
        playerChar.DisplayPlayer();    
+       enemyChar.
       }
     }
   }
@@ -104,8 +112,8 @@ void mousePressed() {
 
   if (removeButtons && City == null) {  
     buttons = new Button[0]; // Remove buttons after the loop
-    City = new Gif(this, "City.gif");
-    City.play();    
+    //City = new Gif(this, "City.gif");
+  //  City.play();    
   }
 }
 
