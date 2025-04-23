@@ -3,7 +3,7 @@ import org.gamecontrolplus.*;
 import org.gamecontrolplus.gui.*;
 
 import processing.pdf.*;
-
+int Health = 100;
 import gifAnimation.*;
 int startTime;
 int delayTime = 3000;
@@ -29,8 +29,9 @@ void setup() {
  
   playerChar = new Player(this, "Idle.gif", width/2, 500);
   playerChar.DisplayPlayer();
+  playerChar.displayHealth(20, 20, 100);
  
- enemyChar = new Enemy(this, "")
+ //enemyChar = new Enemy(this, "");
 }
 
 // Define a Button class
@@ -90,8 +91,9 @@ void draw() {
     if (millis() - startTime >= delayTime) {
       level.display();
     if (playerChar != null) {
-       playerChar.DisplayPlayer();    
-       enemyChar.
+       playerChar.DisplayPlayer(); 
+       playerChar.displayHealth(width/2 + 390, 20, 100);
+  //     enemyChar.DisplayEnemy();
       }
     }
   }
@@ -112,8 +114,8 @@ void mousePressed() {
 
   if (removeButtons && City == null) {  
     buttons = new Button[0]; // Remove buttons after the loop
-    //City = new Gif(this, "City.gif");
-  //  City.play();    
+    City = new Gif(this, "City.gif");
+    City.play();    
   }
 }
 
