@@ -1,27 +1,31 @@
-import gifAnimation.*;
 int start;
 int delay = 1000;
 float maxHeight = 360.0;
 float defaultHeight = 492.0;
     
 class Player {
-  float health;
+  int health;
   int level;
-  Gif Char;
+  Gif Char; 
   PApplet rpg;
+  PImage enemy;
   float x, y;
   
-  Player(PApplet rpg, String spritePath, float x, float y) {
+  Player(PApplet rpg, String spritePath, float x, float y, int health) {
     this.rpg = rpg;
     this.x = x;
     this.y = y;
+    
+    if (health == 100) {
+      rpg.image()
+    }
     
     Char = new Gif(rpg, spritePath);
     Char.loop();    
   }
   
   void DisplayPlayer() {
-    rpg.image(Char, x, y);
+   rpg.image(Char, x, y);
   }
   
   void keyPressed() {   
@@ -31,8 +35,8 @@ class Player {
     if (key == 'w') {
       y = y - (defaultHeight - maxHeight);
       println(y);    
-      Char = new Gif(rpg, "jump.gif");
-      Char.loop(); 
+     Char = new Gif(rpg, "jump.gif");
+    Char.loop(); 
     } if (key == 'a') {
       x -= 1 * speed;     
       Char = new Gif(rpg, "runLeft.gif");
